@@ -1,12 +1,14 @@
 terraform{
     backend "s3" {
-        bucket = "davoclock-aws-cicd-pipeline"
+        bucket = "aws-cicd-pipelines"
         encrypt = true
         key = "terraform.tfstate"
-        region = "us-east-1"
+        region = "eu-west-2"
     }
 }
 
 provider "aws" {
-    region = "us-east-1"
+  shared_credentials_file = "$HOME/.aws/credentials"
+  profile                 = "default"
+  region                  = "eu-west-2"
 }
